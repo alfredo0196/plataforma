@@ -1,0 +1,4 @@
+function tituloValido(titulo) {
+    const regex = /^[a-zA-ZÀ-ÿ0-9\s\-\:\.\(\)]+$/;
+    return regex.test(titulo);
+}
