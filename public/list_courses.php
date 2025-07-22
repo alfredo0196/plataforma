@@ -104,6 +104,10 @@ $cursos = $stmt->fetchAll();
                                 <a href="list_modules.php?curso_id=<?php echo $curso['id']; ?>" class="btn btn-outline-primary btn-sm">
                                     <i class="bi bi-list-ul"></i> Módulos
                                 </a>
+
+                                <a href="list_materials.php?curso_id=<?php echo $curso['id']; ?>" class="btn btn-outline-secondary btn-sm">
+                                    <i class="bi bi-paperclip"></i> Materiais
+                                </a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -120,7 +124,7 @@ $cursos = $stmt->fetchAll();
     Plataforma de Cursos Online e Ensino à Distância (EAD) © <?php echo date("Y"); ?> | Desenvolvido por ALFREDO MIANGO
 </footer>
 
-<!-- Bootstrap JS (necessário para fechar o alerta) -->
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

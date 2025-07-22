@@ -14,6 +14,7 @@ if (!isset($_GET['curso_id'])) {
 
 $curso_id = $_GET['curso_id'];
 
+// Verificar se o curso existe
 $stmt = $pdo->prepare("SELECT * FROM cursos WHERE id = ?");
 $stmt->execute([$curso_id]);
 $curso = $stmt->fetch();
@@ -23,11 +24,13 @@ if (!$curso) {
     exit;
 }
 
+// Verificar se o professor tem acesso ao curso
 if ($_SESSION['user_tipo'] === 'professor' && $curso['professor_id'] != $_SESSION['user_id']) {
     header("Location: error.php?mensagem=Acesso não autorizado.");
     exit;
 }
 
+// Buscar os módulos
 $stmt = $pdo->prepare("SELECT * FROM modulos WHERE curso_id = ? ORDER BY ordem ASC");
 $stmt->execute([$curso_id]);
 $modulos = $stmt->fetchAll();
@@ -68,9 +71,14 @@ $mensagem = $_GET['mensagem'] ?? null;
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Módulos do Curso: <?php echo htmlspecialchars($curso['titulo']); ?></h2>
         <?php if ($_SESSION['user_tipo'] === 'professor'): ?>
-            <a href="create_module.php?curso_id=<?php echo $curso_id; ?>" class="btn btn-success">
-                <i class="bi bi-plus-circle"></i> Adicionar Módulo
-            </a>
+            <div class="d-flex gap-2">
+                <a href="create_module.php?curso_id=<?php echo $curso_id; ?>" class="btn btn-success">
+                    <i class="bi bi-plus-circle"></i> Adicionar Módulo
+                </a>
+                <a href="list_materials.php?curso_id=<?php echo $curso_id; ?>" class="btn btn-secondary">
+                    <i class="bi bi-paperclip"></i> Materiais
+                </a>
+            </div>
         <?php endif; ?>
     </div>
 
