@@ -4,53 +4,15 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
 }
+
+// Inclui o cabeçalho e a navbar
+include '../layouts/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard | Plataforma</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap + Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .navbar-brand {
-            font-weight: 600;
-        }
-        footer {
-            font-size: 0.9rem;
-        }
-    </style>
-</head>
-<body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
-    <div class="container">
-        <a class="navbar-brand" href="dashboard.php">🎓 Plataforma</a>
-        <div class="d-flex align-items-center">
-            <span class="navbar-text text-white me-3">
-                <i class="bi bi-person-circle"></i>
-                <?php echo htmlspecialchars($_SESSION['user_nome']); ?>
-                (<?php echo htmlspecialchars($_SESSION['user_tipo']); ?>)
-            </span>
-            <a class="btn btn-sm btn-light" href="logout.php">
-                <i class="bi bi-box-arrow-right"></i> Sair
-            </a>
-        </div>
-    </div>
-</nav>
-
-<!-- CONTEÚDO -->
-<div class="container py-5">
-    <div class="text-center mb-4">
-        <h2 class="fw-bold">Bem-vindo(a), <?php echo htmlspecialchars($_SESSION['user_nome']); ?>!</h2>
-        <p class="text-muted">Aqui você gerencia seus cursos e atividades.</p>
-    </div>
+<!-- CONTEÚDO PRINCIPAL -->
+<div class="container py-5 text-center">
+    <h2 class="fw-bold mb-3">Bem-vindo(a), <?php echo htmlspecialchars($_SESSION['user_nome']); ?>!</h2>
+    <p class="text-muted mb-4">Aqui você gerencia seus cursos e atividades.</p>
 
     <div class="row g-4 justify-content-center">
         <div class="col-md-4">
@@ -69,10 +31,7 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 </div>
 
-<!-- RODAPÉ -->
-<footer class="bg-primary text-white text-center py-3 mt-5">
-    Plataforma de Cursos Online e Ensino à Distância (EAD) ©<?php echo date("Y"); ?> | Desenvolvido por ALFREDO MIANGO
-</footer>
-
-</body>
-</html>
+<?php
+// Inclui o rodapé com o mascote e scripts
+include '../layouts/footer.php';
+?>

@@ -88,7 +88,7 @@ if (!$curso) {
 
 <!-- RODAPÉ -->
 <footer class="bg-primary text-white text-center py-3 mt-5">
-    Plataforma de Cursos Online © <?php echo date("Y"); ?> | Desenvolvido por Alfredo Miango
+    Plataforma de Cursos Online e Ensino à Distância (EAD) © 2025 <?php echo date("Y"); ?> | Desenvolvido por ALFREDO MIANGO
 </footer>
 
 <!-- Bootstrap JS -->
